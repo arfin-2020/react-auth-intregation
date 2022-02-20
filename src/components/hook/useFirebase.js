@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../firebase/Firebase.config";
+import '../firebase/Firebase.config';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 
@@ -12,9 +12,11 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
-                console.log(user)
+                console.log(user);
+                setUser(user);
             }).catch((error) => {
                 setError(error.message)
+                console.log(error)
             });
     }
     return {
