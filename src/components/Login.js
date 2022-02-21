@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import useFirebase from "./hook/useFirebase";
+import  { useAuth } from "./hook/useFirebase";
 import classes from './style/Header.module.css';
 
 const Login = () =>{
-    const {error, signInWithGoogle,user} = useFirebase();
-    console.log(user)
+    const { signInWithGoogle} = useAuth();
+    // console.log(user.displayName)
     return(
         <div className={classes.header}>
             <h2>Please Login....</h2>
