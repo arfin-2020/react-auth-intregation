@@ -1,5 +1,6 @@
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import '../firebase/Firebase.config';
 
 const AuthContext = createContext();
@@ -13,7 +14,7 @@ const UseFirebase = ({children}) => {
     const [user, setUser] = useState();
     const [error, setError] = useState('');
     const auth = getAuth();
-    
+    const history = useNavigate()
 
 
     const signInWithGoogle = () => {
@@ -23,6 +24,7 @@ const UseFirebase = ({children}) => {
                 const user = result.user;
                 // console.log(user);
                 setUser(user);
+                history("/",{replace:true})
             }).catch((error) => {
                 setError(error.message)
                 console.log(error)
@@ -43,7 +45,7 @@ const UseFirebase = ({children}) => {
         signOut(auth)
         .then(()=>{
             console.log('logout successfull.')
-            setUser({})
+            setUser('')
         }).catch((error) => {
             console.log(error.message)
           });
