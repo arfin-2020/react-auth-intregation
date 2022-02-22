@@ -1,4 +1,4 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup,onAuthStateChanged, signOut  } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import '../firebase/Firebase.config';
 
@@ -10,7 +10,7 @@ export const useAuth = () => {
 
 
 const UseFirebase = ({children}) => {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState();
     const [error, setError] = useState('');
     const auth = getAuth();
     
